@@ -10,7 +10,8 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="/assets/kob.ico" />
+
+    <link rel="shortcut icon" href="{% static 'kob.ico' %}" />
     <title>KochiOrgBook Email Verification Service</title>
     <meta
       name="description"
@@ -85,16 +86,16 @@
             <img
               class="img-fluid d-none d-md-block"
               src="/assets/images/kob_logo.svg"
-              width="177"
-              height="44"
+              width="100"
+              height="20"
               alt="KOB Logo"
             />
 
             <img
               class="img-fluid d-md-none"
               src="/assets/images/kob_logo.svg"
-              width="63"
-              height="44"
+              width="100"
+              height="20"
               alt="KOB Logo"
             />
           </a>
@@ -148,9 +149,9 @@
         </div>
       </div>
     </main>
-    <footer class="footer">
+      <!--  <footer class="footer">
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <!-- Navbar content -->
+     Navbar content
         <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -196,7 +197,7 @@
           </ul>
         </div>
       </nav>
-    </footer>
+    </footer>-->
     <script src="{% static 'js/bcgov_theme.min.js' %}" async defer></script>
     <script src="{% static 'js/verify.js' %}" async defer></script>
   </body>
