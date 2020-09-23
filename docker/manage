@@ -1,7 +1,7 @@
 #!/bin/bash
 export MSYS_NO_PATHCONV=1
 export DOCKERHOST=${APPLICATION_URL-$(docker run --rm --net=host eclipse/che-ip)}
-set -e
+set -e                             ## Explaination : It is used to exit immediately if a command exits with a non-zero status
 
 function echoError (){
   _msg=${1}
@@ -93,35 +93,35 @@ function generateSeed(){
   )
 }
 
-SCRIPT_HOME="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_HOME="$(cd "$(dirname "$0")" && pwd)"   ## Explaination :   ????
 
 # =================================================================================================================
 # Usage:
 # -----------------------------------------------------------------------------------------------------------------
 usage() {
   cat <<-EOF
-    
+
       Usage: $0 [command] [options]
-    
+
       Commands:
-    
+
       build - Build the docker images for the project.
               You need to do this first, since the builds require
               a combination of Docker and S2I builds.
-    
+
       up -  Creates the application containers from the built images
             and starts the services based on the docker-compose.yml file.
 
-            You can pass in a list of containers to start.  
+            You can pass in a list of containers to start.
             By default all containers will be started.
-            
+
       start - Same as up
 
       logs - Display the logs from the docker compose run (ctrl-c to exit).
 
       stop - Stops the services.  This is a non-destructive process.  The volumes and containers
              are not deleted so they will be reused the next time you run start.
-    
+
       down - Brings down the services and removes the volumes (storage) and containers.
 
       rm - Same as down
@@ -224,7 +224,7 @@ toLower() {
 
 pushd ${SCRIPT_HOME} >/dev/null
 COMMAND=$(toLower ${1})
-shift || COMMAND=usage
+shift || COMMAND=usage  ## Explaination :   ????
 
 case "${COMMAND}" in
 start|up)
@@ -232,7 +232,8 @@ start|up)
     isJQInstalled
     isCurlInstalled
     isNgrokInstalled
-  
+
+# 
     export SITE_URL=$(${CURL_EXE} http://localhost:4040/api/tunnels | ${JQ_EXE} --raw-output '.tunnels | map(select(.name | contains("(http)"))) | .[0] | .public_url')
     checkNgrokTunnelActive
   fi
@@ -252,10 +253,10 @@ logs)
   ;;
 stop)
   configureEnvironment
-  docker-compose stop 
+  docker-compose stop
   ;;
 rm|down)
-  unset AGENT_WALLET_SEED 
+  unset AGENT_WALLET_SEED
   configureEnvironment
   docker-compose down
   deleteVolumes
