@@ -1,6 +1,6 @@
 #!/bin/bash
 export KOB_SERVICE="raw.githubusercontent.com"
-KOB_NAMESPACE="{KOB_NAMESPACE:-hyperledgerkochi}"
+KOB_NAMESPACE="EtricKombat"
 VERSION="v2"
 echo "KOB-EMAIL-VERIFICATION-SERVICE"
 [[ -d $HOME/KOB-email-verification-service ]] && echo "Service already found at $HOME/KOB-email-verification-service" && exit 0
